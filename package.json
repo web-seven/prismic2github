@@ -1,0 +1,24 @@
+{
+  "name": "prismic2github",
+  "version": "0.0.1",
+  "description": "Prismic.io proxy to Github Actions",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-seven/prismic2github.git"
+  },
+  "keywords": [
+    "prismic",
+    "github",
+    "actions"
+  ],
+  "author": "Web7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/web-seven/prismic2github/issues"
+  },
+  "homepage": "https://github.com/web-seven/prismic2github#readme"
+}
