@@ -17,10 +17,10 @@ const server = http.createServer((req, res) => {
             const urlObject = url.parse(req.url,true);
             const queryParams = urlObject.query;
             const [basepath, owner, repo] = urlObject.pathname.replace(/^\/|\/$/g, '').split('/');
-            if (!owner || !repo || !queryParams.branch || !queryParams.workflow) {
+            if (!owner || !repo || !queryParams.branch || !queryParams.workflow || !queryParams.version) {
                 res.statusCode = 400;
                 res.end('Github repository owner, repo name or branch not found, please define it in URL eg.:'
-                        +' /prismic/{owner}/{repo}?branch={branch_name}&workflow={workflow_id}');
+                        +' /prismic/{owner}/{repo}?branch={branch_name}&workflow={workflow_id}&version={version}');
                 return;
             }
             if (!data.secret) {
@@ -51,7 +51,8 @@ const server = http.createServer((req, res) => {
                 ref: queryParams.branch,
                 workflow_id: queryParams.workflow,
                 inputs: {
-                    release: releaseName
+                    release: releaseName,
+                    version: queryParams.version,
                 }
             }).then((releaseData) => {
                 if (releaseData.status === 204) {
