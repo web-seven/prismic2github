@@ -33,18 +33,8 @@ const server = http.createServer((req, res) => {
                 auth: token
             });
 
-            let releaseName = ''
-
-            if (data.releases.addition) {
-                releaseName = data.releases.addition[0].id;
-            } else if (data.releases.update) {
-                releaseName = data.releases.update[0].id;
-            } else {
-                res.statusCode = 400;
-                res.end('Payload not contain data for create or update release');
-                return;
-            }
-
+            let releaseName = new Date().getTime().toString();
+            
             octokit.actions.createWorkflowDispatch({
                 owner: owner,
                 repo: repo,
